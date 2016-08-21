@@ -6,7 +6,7 @@ import ua.artcode.model.User;
 /**
  * Created by serhii on 21.08.16.
  */
-public class AppDBImpl implements AppDB {
+public class AppDBImpl implements IAppDB {
 
     private Company[] companies;
     private User[] users;

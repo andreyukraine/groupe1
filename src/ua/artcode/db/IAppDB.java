@@ -5,7 +5,7 @@ import ua.artcode.model.Company;
 /**
  * crud operation
  */
-public interface AppDB {
+public interface IAppDB {
 
     Company createCompany(Company company);
     Company deleteCompany(Company company);
