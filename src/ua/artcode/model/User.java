@@ -9,18 +9,30 @@ public class User {
     private String email;
     private String fullname;
     private String phone;
-
     private String pass;
+    private String role;
+
+    // constructors --------------------------------------------------------------------------------
 
     public User() {
     }
 
-    public User(String email, String fullname,
-                String phone, String pass) {
+    public User(String email, String fullname, String phone, String pass, String role) {
         this.email = email;
         this.fullname = fullname;
         this.phone = phone;
         this.pass = pass;
+        this.role = role;
+    }
+
+    // geters & seters -----------------------------------------------------------------------------
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public long getId() {
