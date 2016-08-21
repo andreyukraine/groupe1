@@ -15,12 +15,11 @@ public class Company {
     private Moderator[] moderators;
 
     // constructors --------------------------------------------------------------------------------
-    public Company(String nameCompany, Address address, String descriptionCompany, Worker[] workers, Comment[] comments, Moderator[] moderators) {
+    public Company(String nameCompany, Address address, String descriptionCompany, Worker[] workers, Moderator[] moderators) {
         this.nameCompany = nameCompany;
         this.address = address;
         this.descriptionCompany = descriptionCompany;
         this.workers = workers;
-        this.comments = comments;
         this.moderators = moderators;
     }
 
