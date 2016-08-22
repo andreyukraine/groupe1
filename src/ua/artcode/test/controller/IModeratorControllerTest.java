@@ -10,6 +10,7 @@ import ua.artcode.model.Moderator;
  */
 
 public class IModeratorControllerTest {
+    //TODO test
     static IModeratorController iModeratorController = new IModeratorControllerImp();
     public static void main(String[] args) {
         Company company = new Company("Рога&Копыта", null, "descriptionCompany", null, null);
@@ -18,12 +19,13 @@ public class IModeratorControllerTest {
     }
 
 
-    static boolean registerTest(String nameModerator, String email, String pass, String role, Company company, Moderator moderator1){
-        Moderator moderator = iModeratorController.register(nameModerator, email, pass, role, company);
+    static boolean registerTest(String fullname, String email, String pass, String role, Company company, Moderator moderator1){
+        Moderator moderator = iModeratorController.register(fullname, email, pass, role, company);
         boolean booleanrez = moderator.getFullname().equals(moderator1.getFullname());
         System.out.printf("res %s, method %s, ex %s = practical %s\n",
                 booleanrez , "registerTest", moderator1.getFullname(), moderator.getFullname());
         return booleanrez;
     }
+
 
 }

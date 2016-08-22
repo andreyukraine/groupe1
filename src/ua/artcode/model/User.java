@@ -7,6 +7,8 @@ import ua.artcode.controler.IUserController;
  */
 public class User{
 
+    //u+1
+    //u+2
     private long id;
     private String email;
     private String fullname;
