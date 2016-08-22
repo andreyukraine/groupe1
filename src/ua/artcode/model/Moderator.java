@@ -3,14 +3,10 @@ package ua.artcode.model;
 /**
  * Created by IT on 21.08.2016.
  */
-public class Moderator {
+public class Moderator extends User{
 
-    long id;
-    String nameModerator;
-    String email;
-    String pass;
-    String role;
     Company company;
+
     Worker[] workers;
     Service[] services;
     Order[] orders;
@@ -19,55 +15,13 @@ public class Moderator {
 
     // constructors --------------------------------------------------------------------------------
 
-    public Moderator(String nameModerator, String email, String pass, String role, Company company) {
-        this.nameModerator = nameModerator;
-        this.email = email;
-        this.pass = pass;
-        this.role = role;
+    public Moderator(String fullname, String email, String phone, String pass, String role, Company company) {
+        super(email, fullname, phone, pass, role);
         this.company = company;
     }
 
     // geters & seters -----------------------------------------------------------------------------
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNameModerator() {
-        return nameModerator;
-    }
-
-    public void setNameModerator(String nameModerator) {
-        this.nameModerator = nameModerator;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
 
     public Company getCompany() {
         return company;

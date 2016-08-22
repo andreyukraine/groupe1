@@ -43,6 +43,6 @@ public interface IModeratorController {
     //посмотреть всех свободных сотрудников
     Worker[] showAllFreeWorker(Status status);
 
-    //назначит сервису работника
+    //назначить сервису работника
     Service asignServiceWorker(Worker worker);
 }

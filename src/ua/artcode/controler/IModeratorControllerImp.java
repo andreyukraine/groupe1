@@ -7,9 +7,10 @@ import ua.artcode.model.*;
  * Created by IT on 21.08.2016.
  */
 public class IModeratorControllerImp implements IModeratorController {
+
     @Override
     public Moderator register(String nameModerator, String email, String pass, String role, Company company) {
-        Moderator moderator= new Moderator(nameModerator,email,pass,role,company);
+        Moderator moderator= new Moderator(nameModerator,email,pass,"","",company);
         return moderator;
     }
 
