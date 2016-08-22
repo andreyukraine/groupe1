@@ -45,4 +45,6 @@ public interface IModeratorController {
 
     //назначить сервису работника
     Service asignServiceWorker(Worker worker);
+
+
 }

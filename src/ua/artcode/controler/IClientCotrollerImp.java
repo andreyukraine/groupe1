@@ -5,7 +5,7 @@ import ua.artcode.model.*;
 /**
  * Created by IT on 22.08.2016.
  */
-public class IUserCotrollerImp implements IUserController {
+public class IClientCotrollerImp implements IClientController {
     @Override
     public User register(String email, String fullname, String phone, String pass, String role) {
         return null;

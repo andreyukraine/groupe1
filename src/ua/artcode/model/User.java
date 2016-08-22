@@ -1,7 +1,5 @@
 package ua.artcode.model;
 
-import ua.artcode.controler.IUserController;
-
 /**
  * Created by serhii on 21.08.16.
  */

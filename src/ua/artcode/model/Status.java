@@ -7,7 +7,20 @@ public class Status {
 
     //статус работника
 
+        //-free
+        //-busy
+
     //статус заказа
 
+        //-new
+        //-in progress
+        //-closed
+        //-refused
+
     //роли сервиса PSA
+
+        //-moderatorPSA
+        //-moderatorCompany
+        //-user
+        //-worker
 }

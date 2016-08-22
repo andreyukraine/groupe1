@@ -8,6 +8,7 @@ import ua.artcode.model.*;
  */
 public class IModeratorControllerImp implements IModeratorController {
 
+
     @Override
     public Moderator register(String fullname, String email, String pass, String role, Company company) {
         Moderator moderator= new Moderator(fullname,email,pass,"","",company);

@@ -5,7 +5,7 @@ import ua.artcode.model.*;
 /**
  * Created by IT on 21.08.2016.
  */
-public interface IUserController {
+public interface IClientController {
 
     // зарегистрирация
     User register(String email, String fullname, String phone, String pass, String role);
