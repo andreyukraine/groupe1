@@ -1,6 +1,6 @@
     IWorker
         //TODO Lada
-        //регистрация
+        //регистрация1
         Worker register(String nameWorker, Company company, String descriptionWorker, Status status, String email, String pass);
         //посмотреть все закрепленные сервисы
         Service[] myServices(Worker worker);
