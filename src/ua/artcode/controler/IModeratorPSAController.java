@@ -10,7 +10,7 @@ public interface IModeratorPSAController {
     ModeratorPSA register(String nameModerator, String email, String pass);
 
     //добавить сервис
-    Service addService(String nameService, String descriptionService);
+    Service createService(String nameService, String descriptionService);
 
     //удалить сервис
     Service removeService(long serviceId);
@@ -38,5 +38,12 @@ public interface IModeratorPSAController {
 
     //посмотреть все компании
     Company[] listAllCompany();
+
+    //редактировать сервис
+    Service editService(long id);
+
+    //посмотреть все сервисы
+    Service[] listAllService();
+
 
 }
