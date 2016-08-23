@@ -3,7 +3,7 @@ package ua.artcode.model;
 /**
  * Created by IT on 21.08.2016.
  */
-public class Address {
+public class Location {
 
     private long id;
     private String country;
@@ -11,11 +11,16 @@ public class Address {
     private String address;
 
     // constructors --------------------------------------------------------------------------------
-    public Address(String country, String city, String address) {
+    public Location(String country, String city, String address) {
         this.country = country;
         this.city = city;
         this.address = address;
     }
+
+    //metods----------------------------------------------------------------------------------------
+
+    // создание локаций (городов)
+
 
     // geters & seters -----------------------------------------------------------------------------
     public long getId() {

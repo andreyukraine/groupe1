@@ -7,7 +7,7 @@ public class Company {
 
     private long id;
     private String nameCompany;
-    private Address address;
+    private Location location;
     private String descriptionCompany;
 
     private Worker[] workers;
@@ -15,9 +15,9 @@ public class Company {
     private Moderator[] moderators;
 
     // constructors --------------------------------------------------------------------------------
-    public Company(String nameCompany, Address address, String descriptionCompany, Worker[] workers, Moderator[] moderators) {
+    public Company(String nameCompany, Location location, String descriptionCompany, Worker[] workers, Moderator[] moderators) {
         this.nameCompany = nameCompany;
-        this.address = address;
+        this.location = location;
         this.descriptionCompany = descriptionCompany;
         this.workers = workers;
         this.moderators = moderators;
@@ -40,12 +40,12 @@ public class Company {
         this.nameCompany = nameCompany;
     }
 
-    public Address getAddress() {
-        return address;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getDescriptionCompany() {
