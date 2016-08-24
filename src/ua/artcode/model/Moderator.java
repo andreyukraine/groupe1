@@ -16,7 +16,7 @@ public class Moderator extends User{
     // constructors --------------------------------------------------------------------------------
 
     public Moderator(String fullname, String email, String phone, String pass, String role, Company company) {
-        super(email, fullname, phone, pass, role);
+        super(fullname, email, phone, pass, role);
         this.company = company;
     }
 

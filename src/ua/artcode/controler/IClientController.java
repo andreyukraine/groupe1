@@ -14,10 +14,16 @@ public interface IClientController {
     Service[] searchService();
 
     //создать заказ
-    Order addOrder(Company company, Service service);
+    Order createOrder(Company company, Service service);
+
+    //редактировать заказ
+    Order editOrder();
+
+    //закрыть заказ
+    Order closeOrder();
 
     //посмотреть свои заказы
-    Order[] listOrders(User user);
+    Order[] listOrders(User user, Status status);
 
     //оставить комментарий сервису
     Comment addCommentService (Service service);

@@ -9,8 +9,8 @@ public class Client extends User {
 
     // constructors --------------------------------------------------------------------------------
 
-    public Client(String email, String fullname, String phone, String pass, String role) {
-        super(email, fullname, phone, pass, role);
+    public Client(String fullname, String email, String phone, String pass, String role) {
+        super(fullname, email, phone, pass, role);
     }
 
 

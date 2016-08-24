@@ -46,5 +46,16 @@ public interface IModeratorController {
     //назначить сервису работника
     Service asignServiceWorker(Worker worker);
 
+    //удалить сотрудника с компании
+    Worker[] removeWorker(long workerId);
+
+    // редактировать сотрудника
+    Worker editWorker(long workerId);
+
+    //удалить сервис
+    Service removeService(long serviceId);
+
+    // изменить статус заказа
+    Order assignStatusOrder(Order order, Status status);
 
 }

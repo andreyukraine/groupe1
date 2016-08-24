@@ -16,7 +16,7 @@ public class ModeratorPSA extends User{
 
     // constructors --------------------------------------------------------------------------------
 
-    public ModeratorPSA(String email, String fullname, String phone, String pass, String role, Company[] companies) {
+    public ModeratorPSA(String fullname, String email, String phone, String pass, String role) {
         super(email, fullname, phone, pass, role);
     }
 

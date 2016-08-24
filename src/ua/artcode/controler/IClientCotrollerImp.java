@@ -6,6 +6,7 @@ import ua.artcode.model.*;
  * Created by IT on 22.08.2016.
  */
 public class IClientCotrollerImp implements IClientController {
+
     @Override
     public User register(String email, String fullname, String phone, String pass, String role) {
         return null;
@@ -17,13 +18,8 @@ public class IClientCotrollerImp implements IClientController {
     }
 
     @Override
-    public Order addOrder(Company company, Service service) {
+    public Order createOrder(Company company, Service service) {
         return null;
-    }
-
-    @Override
-    public Order[] listOrders(User user) {
-        return new Order[0];
     }
 
     @Override
@@ -44,5 +40,20 @@ public class IClientCotrollerImp implements IClientController {
     @Override
     public Comment addCommentPSA() {
         return null;
+    }
+
+    @Override
+    public Order editOrder() {
+        return null;
+    }
+
+    @Override
+    public Order closeOrder() {
+        return null;
+    }
+
+    @Override
+    public Order[] listOrders(User user, Status status) {
+        return new Order[0];
     }
 }

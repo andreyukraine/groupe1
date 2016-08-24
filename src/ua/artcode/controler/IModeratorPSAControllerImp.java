@@ -12,9 +12,10 @@ public class IModeratorPSAControllerImp implements IModeratorPSAController {
     }
 
     @Override
-    public Service addService(String nameService, String descriptionService) {
+    public Service createService(String nameService, String descriptionService) {
         return null;
     }
+
 
     @Override
     public Service removeService(long serviceId) {
@@ -59,5 +60,15 @@ public class IModeratorPSAControllerImp implements IModeratorPSAController {
     @Override
     public Company[] listAllCompany() {
         return new Company[0];
+    }
+
+    @Override
+    public Service editService(long id) {
+        return null;
+    }
+
+    @Override
+    public Service[] listAllService() {
+        return new Service[0];
     }
 }

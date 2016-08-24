@@ -69,4 +69,24 @@ public class IModeratorControllerImp implements IModeratorController {
     public Service asignServiceWorker(Worker worker) {
         return null;
     }
+
+    @Override
+    public Worker[] removeWorker(long workerId) {
+        return new Worker[0];
+    }
+
+    @Override
+    public Worker editWorker(long workerId) {
+        return null;
+    }
+
+    @Override
+    public Service removeService(long serviceId) {
+        return null;
+    }
+
+    @Override
+    public Order assignStatusOrder(Order order, Status status) {
+        return null;
+    }
 }
