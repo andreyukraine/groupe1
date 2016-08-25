@@ -56,15 +56,15 @@ public class IModeratorPSAControllerImp implements IModeratorPSAController {
         return services;
     }
 
-    public Company[] addCompany(Company company) {
-        for (int i = 0; i < companies.length ; i++) {
-            if (companies[i] == null) {
-                companies[i] = company;
-                return companies;
-            }
-        }
-        return companies;
-    }
+//    public Company[] addCompany(Company company) {
+//        for (int i = 0; i < companies.length ; i++) {
+//            if (companies[i] == null) {
+//                companies[i] = company;
+//                return companies;
+//            }
+//        }
+//        return companies;
+//    }
 
 
     public Company[] removeCompany(long companyId) {
