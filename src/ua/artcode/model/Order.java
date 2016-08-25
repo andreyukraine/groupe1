@@ -31,6 +31,9 @@ public class Order {
         this.status = status;
     }
 
+    public Order() {
+    }
+
     // geters & seters -----------------------------------------------------------------------------
 
     public Status getStatus() {

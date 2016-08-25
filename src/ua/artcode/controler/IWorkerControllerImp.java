@@ -7,8 +7,9 @@ import ua.artcode.model.*;
  */
 public class IWorkerControllerImp implements IWorkerController {
     @Override
-    public Worker register(String nameWorker, Company company, String descriptionWorker, Status status, String email, String pass) {
-        return null;
+    public Worker register(String fullname, Company company, String descriptionWorker, Status status, String email, String pass) {
+        Worker worker= new Worker(fullname, email, "", pass, "", company, descriptionWorker, status);
+        return worker;
     }
 
     @Override

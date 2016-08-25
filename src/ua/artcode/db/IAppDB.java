@@ -1,18 +1,14 @@
 package ua.artcode.db;
 
 import ua.artcode.model.Company;
+import ua.artcode.model.Service;
 
 /**
  * crud operation
  */
 public interface IAppDB {
 
-    Company createCompany(Company company);
-    Company deleteCompany(Company company);
-    Company updateCompany(Company company);
-    Company findCompany(Company company);
-    Company[] getAllCompanies();
-    Company[] findByKeyWord(String key, int start, int length);
-
-
+    //
+    Service addService(Service service);
+    Service updateService(long serviceId, Service service);
 }

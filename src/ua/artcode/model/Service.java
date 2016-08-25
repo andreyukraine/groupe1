@@ -19,8 +19,11 @@ public class Service {
         this.descriptionService = descriptionService;
     }
 
+    public Service() {
+    }
 
     // geters & seters -----------------------------------------------------------------------------
+
 
     public long getId() {
         return id;

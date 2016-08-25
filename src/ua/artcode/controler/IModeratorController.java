@@ -14,7 +14,7 @@ public interface IModeratorController {
     Moderator register(String fullname, String email, String pass, String role, Company company);
 
     // создаем компанию
-    Company addCompany(Company company);
+    Company createCompany(Company company);
 
     // изменяем данные про компанию
     Company editCompany(Company company);
@@ -46,5 +46,16 @@ public interface IModeratorController {
     //назначить сервису работника
     Service asignServiceWorker(Worker worker);
 
+    //удалить сотрудника с компании
+    Worker[] removeWorker(long workerId);
+
+    // редактировать сотрудника
+    Worker editWorker(long workerId);
+
+    //удалить сервис
+    Service removeService(long serviceId);
+
+    // изменить статус заказа
+    Order assignStatusOrder(Order order, Status status);
 
 }

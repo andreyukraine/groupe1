@@ -21,6 +21,9 @@ public class Comment {
         this.createdTime = createdTime;
     }
 
+    public Comment() {
+    }
+
     // geters & seters -----------------------------------------------------------------------------
     public String getTitle() {
         return title;

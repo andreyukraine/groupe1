@@ -8,18 +8,20 @@ public class ModeratorPSA extends User{
 
 
 
-    Company[] companies;
-    Moderator[] moderators;
-    Worker[] workers;
-    Service[] services;
-    Comment[] comments;
+    private Company[] companies;
+    private Moderator[] moderators;
+    private Worker[] workers;
+    private Service[] services;
+    private Comment[] comments;
 
     // constructors --------------------------------------------------------------------------------
 
-    public ModeratorPSA(String email, String fullname, String phone, String pass, String role, Company[] companies) {
+    public ModeratorPSA(String fullname, String email, String phone, String pass, String role) {
         super(email, fullname, phone, pass, role);
     }
 
+    public ModeratorPSA() {
+    }
 
     // geters & seters -----------------------------------------------------------------------------
 

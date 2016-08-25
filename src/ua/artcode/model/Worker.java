@@ -28,6 +28,8 @@ public class Worker extends User{
         this.status = status;
     }
 
+    public Worker() {
+    }
 
     // geters & seters -----------------------------------------------------------------------------
 
