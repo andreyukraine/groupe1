@@ -13,11 +13,10 @@ public class IModeratorControllerTest {
     //TODO test
     static IModeratorController iModeratorController = new IModeratorControllerImp();
     public static void main(String[] args) {
-        Company company = new Company("Рога&Копыта", null, "descriptionCompany", null, null);
+        Company company = new Company("Рога&Копыта", null, "descriptionCompany", null);
         Moderator moderator = new Moderator("Andrey","a.webears@gmail.com", "+380","123456", "moderator", company);
         registerTest("Andrey","a.webears@gmail.com","123456", "moderator", company, moderator);
     }
-
 
     static boolean registerTest(String fullname, String email, String pass, String role, Company company, Moderator moderator1){
         Moderator moderator = iModeratorController.register(fullname, email, pass, role, company);

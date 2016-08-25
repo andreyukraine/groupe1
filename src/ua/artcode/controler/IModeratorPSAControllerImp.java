@@ -1,6 +1,7 @@
 package ua.artcode.controler;
 
 import ua.artcode.model.*;
+import ua.artcode.run.RunProgramms;
 
 import static ua.artcode.test.controller.IModeratorPSAControllerTest.companies;
 import static ua.artcode.test.controller.IModeratorPSAControllerTest.services;
@@ -18,25 +19,25 @@ public class IModeratorPSAControllerImp implements IModeratorPSAController {
     }
 
 
-    public Service[] createService(String nameService, String descriptionService) {
+    public Service createService(String nameService, String descriptionService) {
+
+        //TODO валиация входных данных
         Service service = new Service(nameService, descriptionService);
-            for (int i = 0; i < services.length; i++) {
-                services[i] = service;
-                return services;
-            }
-        return services;
+        return RunProgramms.appDB.addService(service);
+
     }
 
 
-    public Service[] editService(long serviceId, Service service) {
-        for (int i = 0; i < services.length; i++) {
-            if (services[i].getId() == serviceId){
-                services[i].setNameService(service.getNameService());
-                services[i].setDescriptionService(service.getDescriptionService());
-                return services;
-            }
+    public Service editService(long serviceId, Service service) {
+        for (int i = 0; (i < services.length) & (services[i] != null); i++) {
+
+                if (services[i].getId() == serviceId) {
+                    services[i] = service;
+                    return service;
+                }
+
         }
-        return services;
+        return service;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class IModeratorPSAControllerImp implements IModeratorPSAController {
 
 
     public Service[] removeService(long serviceId) {
-        for (int i = 0; i < services.length  ; i++) {
+        for (int i = 0; (i < services.length) & (services[i] != null)  ; i++) {
             if (services[i].getId() == serviceId){
                 services[i].setNameService(null);
                 services[i].setDescriptionService(null);
@@ -68,7 +69,7 @@ public class IModeratorPSAControllerImp implements IModeratorPSAController {
 
 
     public Company[] removeCompany(long companyId) {
-        for (int i = 0; i < companies.length; i++) {
+        for (int i = 0; (i < companies.length) & (companies[i] != null);  i++) {
             if (companies[i].getId() == companyId){
                 companies[i] = null;
                 return companies;

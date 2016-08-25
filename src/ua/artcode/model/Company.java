@@ -12,16 +12,19 @@ public class Company {
     private String changeStatusCompany;
     private Worker[] workers;
     private Comment[] comments;
-    private Moderator[] moderators;
+    private Service[] services;
+    private Moderator moderator;
 
     // constructors --------------------------------------------------------------------------------
-    public Company(String nameCompany, Location location, String descriptionCompany, Worker[] workers, Moderator[] moderators) {
+    public Company(String nameCompany, Location location, String descriptionCompany, Moderator moderator) {
         this.nameCompany = nameCompany;
         this.location = location;
         this.descriptionCompany = descriptionCompany;
-        this.workers = workers;
-        this.moderators = moderators;
+        this.moderator = moderator;
         this.changeStatusCompany = "new";
+    }
+
+    public Company() {
     }
 
     // geters & seters -----------------------------------------------------------------------------
@@ -73,11 +76,11 @@ public class Company {
         this.comments = comments;
     }
 
-    public Moderator[] getModerators() {
-        return moderators;
+    public Moderator getModerator() {
+        return moderator;
     }
 
-    public void setModerators(Moderator[] moderators) {
-        this.moderators = moderators;
+    public void setModerator(Moderator moderators) {
+        this.moderator = moderators;
     }
 }

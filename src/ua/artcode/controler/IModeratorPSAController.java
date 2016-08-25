@@ -11,13 +11,13 @@ public interface IModeratorPSAController {
 
     //добавить сервис
 
-    Service[] createService(String nameService, String descriptionService);
+    Service createService(String nameService, String descriptionService);
 
     //удалить сервис
     Service[] removeService(long serviceId);
 
     //редактировать сервис
-    Service[] editService(long serviceId, Service service);
+    Service editService(long serviceId, Service service);
 
     //добавить компанию
     //Company[] addCompany(Company company);

@@ -1,6 +1,7 @@
 package ua.artcode.view;
 
 import ua.artcode.controler.IModeratorPSAController;
+import ua.artcode.model.Service;
 
 import java.util.Scanner;
 
@@ -38,6 +39,22 @@ public class ModeratorPSAView {
         System.out.println("10.assignStatusOrder");
 
     }
+
+
+    public void start(){
+        showMainMenu();
+        int choice = -1;
+        while ((choice = Integer.parseInt(scanner.nextLine())) != 0){
+            if(choice == 1){
+                Service service = new Service("test","desc");
+               iModeratorPSAController.editService(1,service);
+            }
+
+            showMainMenu();
+        }
+    }
+
+
 
     //get set-------------------------
 

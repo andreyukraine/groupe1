@@ -25,7 +25,7 @@ public class IModeratorPSAControllerTest {
         createServiceTest("Интернет","Подключение интернета",serviceTest);
         editServiceTest(0,serviceTest1);
 
-        Company company = new Company("Maximum-Net", new Location("Ukraine","Kiev","Address"), "descriptionCompany", null,null);
+        Company company = new Company("Maximum-Net", new Location("Ukraine","Kiev","Address"), "descriptionCompany", null);
         //addCompanyTest(company);
 
         User user = new User("user@gmail.com", "Andrey","+380","123456","user");
@@ -56,20 +56,21 @@ public class IModeratorPSAControllerTest {
 
     //добавить сервис
     static boolean createServiceTest(String nameService, String descriptionService, Service serviceInput){
-        Service[] serviceTest = iModeratorPSAController.createService(nameService,descriptionService);
+        Service serviceTest = iModeratorPSAController.createService(nameService,descriptionService);
         for (int i = 0; i < services.length; i++) {
+            if (services[i] != null) {
                 boolean booleanrez = services[i].getNameService().equals(nameService);
                 System.out.printf("res %s, method %s, ex %s = practical %s\n",
                         booleanrez, "createServiceTest", nameService, services[i].getNameService());
                 return booleanrez;
-
+            }
         }
         return false;
     }
     //редактировать сервис
     static boolean editServiceTest(long serviceId, Service service){
-        Service[] servicesTest = iModeratorPSAController.editService(0,service);
-        for (int i = 0; i < services.length ; i++) {
+        Service servicesTest = iModeratorPSAController.editService(0,service);
+        for (int i = 0; (i < services.length) & (services[i] != null) ; i++) {
             boolean booleanrez = services[i].getNameService().equals(service.getNameService());
             System.out.printf("res %s, method %s, ex %s = practical %s\n",
                     booleanrez, "editServiceTest", service.getNameService(), services[i].getNameService());
@@ -81,7 +82,7 @@ public class IModeratorPSAControllerTest {
     //удалить сервис
     static boolean removeServiceTest(long serviceId, String serviceName){
         Service[] serviceTest = iModeratorPSAController.removeService(serviceId);
-        for (int i = 0; i < services.length; i++) {
+        for (int i = 0; (i < services.length) & (services[i] != null); i++) {
             if (services[i].getId() == serviceId) {
                 boolean booleanrez = services[i].getNameService()==null && services[i].getDescriptionService() == null;
                 System.out.printf("res %s, method %s, ex %s = practical %s\n",
@@ -92,22 +93,22 @@ public class IModeratorPSAControllerTest {
         return  false;
     }
 
-    //добавить компанию
-//    static boolean addCompanyTest(Company company){
-//        Company[] companyTest = iModeratorPSAController.addCompany(company);
-//        for (int i = 0; i < companies.length ; i++) {
-//            boolean booleanrez = companies[i].getNameCompany().equals(companyTest[i].getNameCompany());
-//            System.out.printf("res %s, method %s, ex %s = practical %s\n",
-//                    booleanrez, "addCompanyTest", companies[i].getNameCompany(), companyTest[i].getNameCompany());
-//            return booleanrez;
-//        }
-//        return false;
-//    }
+    //    добавить компанию
+    //    static boolean addCompanyTest(Company company){
+    //        Company[] companyTest = iModeratorPSAController.addCompany(company);
+    //        for (int i = 0; i < companies.length ; i++) {
+    //            boolean booleanrez = companies[i].getNameCompany().equals(companyTest[i].getNameCompany());
+    //            System.out.printf("res %s, method %s, ex %s = practical %s\n",
+    //                    booleanrez, "addCompanyTest", companies[i].getNameCompany(), companyTest[i].getNameCompany());
+    //            return booleanrez;
+    //        }
+    //        return false;
+    //    }
 
     //удалить компанию
     static boolean removeCompanyTest(long companyId, String companyName){
         Company[] companyTest = iModeratorPSAController.removeCompany(0);
-        for (int i = 0; i < companies.length ; i++) {
+        for (int i = 0; (i < companies.length) & (companies[i] != null) ; i++) {
             boolean booleanrez = companies[i].getId() == companyId;
             System.out.printf("res %s, method %s, ex %s = practical %s\n",
                     booleanrez, "removeCompanyTest", companyName, companyTest[i].getNameCompany());
@@ -115,7 +116,8 @@ public class IModeratorPSAControllerTest {
         }
         return false;
     }
-    //    //добавить пользователя
+
+    //добавить пользователя
     static boolean addUserTest(User user){
         User[] userTest = iModeratorPSAController.addUser(user);
         for (int i = 0; i < users.length; i++) {
@@ -126,7 +128,8 @@ public class IModeratorPSAControllerTest {
         }
         return false;
     }
-    //    //изменить пользователя
+
+    //изменить пользователя
     static boolean editUserTest(long userId, User user){
         User[] usersTest = iModeratorPSAController.editUser(userId,user);
         for (int i = 0; i < users.length ; i++) {
@@ -139,10 +142,11 @@ public class IModeratorPSAControllerTest {
         }
         return false;
     }
+
     //удалить пользователя
     static boolean removeUserTest(long userId, String userTest){
         User[] usersTest = iModeratorPSAController.removeUser(userId);
-        for (int i = 0; i < users.length ; i++) {
+        for (int i = 0; (i < users.length) & (users[i] != null); i++) {
                 boolean booleanrez = users[i].getId() == userId;
                 System.out.printf("res %s, method %s, ex %s = practical %s\n",
                         booleanrez, "removeUserTest", users[i].getFullname(), usersTest);
@@ -150,9 +154,9 @@ public class IModeratorPSAControllerTest {
         }
         return false;
     }
-    //    //ответить на коментарий
+    //ответить на коментарий
     //    Comment replyToComment(long commentID, Comment comment);
-    //    //удалить комментарий
+    //удалить комментарий
     //    Comment removeComment(long commentID);
 
     //посмотреть все компании

@@ -17,6 +17,14 @@ public class Location {
         this.address = address;
     }
 
+    public Location(String country, String city) {
+        this.country = country;
+        this.city = city;
+    }
+
+    public Location() {
+    }
+
     //metods----------------------------------------------------------------------------------------
 
     // создание локаций (городов)

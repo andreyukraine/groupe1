@@ -20,6 +20,9 @@ public class Moderator extends User{
         this.company = company;
     }
 
+    public Moderator() {
+    }
+
     // geters & seters -----------------------------------------------------------------------------
 
 

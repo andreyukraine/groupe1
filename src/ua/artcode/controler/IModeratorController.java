@@ -14,7 +14,7 @@ public interface IModeratorController {
     Moderator register(String fullname, String email, String pass, String role, Company company);
 
     // создаем компанию
-    Company addCompany(Company company);
+    Company createCompany(Company company);
 
     // изменяем данные про компанию
     Company editCompany(Company company);

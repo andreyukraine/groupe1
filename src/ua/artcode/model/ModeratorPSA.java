@@ -20,6 +20,8 @@ public class ModeratorPSA extends User{
         super(email, fullname, phone, pass, role);
     }
 
+    public ModeratorPSA() {
+    }
 
     // geters & seters -----------------------------------------------------------------------------
 

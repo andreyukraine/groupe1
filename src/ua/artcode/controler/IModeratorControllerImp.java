@@ -16,7 +16,7 @@ public class IModeratorControllerImp implements IModeratorController {
     }
 
     @Override
-    public Company addCompany(Company company) {
+    public Company createCompany(Company company) {
         return null;
     }
 

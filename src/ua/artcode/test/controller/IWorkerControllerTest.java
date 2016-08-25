@@ -13,7 +13,7 @@ public class IWorkerControllerTest {
 
     static IWorkerController iWorkerController = new IWorkerControllerImp();
     public static void main(String[] args) {
-        Company company = new Company("Marmelad", null, "descriptionMarmelad", null, null);
+        Company company = new Company("Marmelad", null, "descriptionMarmelad", null);
         Status status = new Status();
 
         Worker worker = new Worker("Lada", "@yandex.com", "063153","1234567", "worker", company, "bla", status);

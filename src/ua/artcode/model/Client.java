@@ -13,6 +13,9 @@ public class Client extends User {
         super(fullname, email, phone, pass, role);
     }
 
+    public Client() {
+    }
+
     // geters & seters -----------------------------------------------------------------------------
 
 }
