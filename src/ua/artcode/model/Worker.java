@@ -20,15 +20,12 @@ public class Worker extends User{
 
     // constructors --------------------------------------------------------------------------------
 
-    public Worker(String fullname, String email, String phone,  String pass, String role,
-                  Company company, String descriptionWorker, Status status) {
-        super(fullname, email, phone, pass, role);
-        this.company = company;
+    public Worker(String fullname, String email, String phone,  String pass, String descriptionWorker) {
+        super(fullname, email, phone, pass, descriptionWorker);
         this.descriptionWorker = descriptionWorker;
-        this.status = status;
     }
 
-    public Worker() {
+    public Worker(String lada, String s, String s1, String s2, String worker, Company company, String bla, Status status) {
     }
 
     // geters & seters -----------------------------------------------------------------------------

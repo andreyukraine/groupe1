@@ -19,6 +19,8 @@ public class IModeratorPSAControllerImp implements IModeratorPSAController {
     }
 
 
+
+
     public Service createService(String nameService, String descriptionService) {
 
         //TODO валиация входных данных
@@ -27,6 +29,10 @@ public class IModeratorPSAControllerImp implements IModeratorPSAController {
 
     }
 
+    @Override
+    public Service addService(String nameService, String descriptionService) {
+        return null;
+    }
 
     public Service editService(long serviceId, Service service) {
         for (int i = 0; (i < services.length) & (services[i] != null); i++) {

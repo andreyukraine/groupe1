@@ -9,6 +9,8 @@ public interface IModeratorPSAController {
     //регистрация
     ModeratorPSA register(String fullname, String email, String phone, String pass, String role);
 
+    public Service addService(String nameService, String descriptionService);
+
     //добавить сервис
 
     Service createService(String nameService, String descriptionService);

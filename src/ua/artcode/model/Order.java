@@ -10,7 +10,9 @@ public class Order {
     private long id;
     private String numberOrder;
     private Date createdTime;
-    private Date leadTime;
+
+    // не правильно, лид тайм int
+    private int leadTime;
     private Service service;
     private User user;
     private Worker worker;
@@ -20,15 +22,12 @@ public class Order {
     // constructors --------------------------------------------------------------------------------
 
 
-    public Order(String numberOrder, Date createdTime, Date leadTime, Service service, User user, Worker worker, String descriptionOrder, Status status) {
-        this.numberOrder = numberOrder;
-        this.createdTime = createdTime;
+    public Order(int leadTime, Service service, User user, String descriptionOrder) {
         this.leadTime = leadTime;
         this.service = service;
         this.user = user;
-        this.worker = worker;
         this.descriptionOrder = descriptionOrder;
-        this.status = status;
+
     }
 
     public Order() {
@@ -52,11 +51,11 @@ public class Order {
         this.createdTime = createdTime;
     }
 
-    public Date getLeadTime() {
+    public int getLeadTime() {
         return leadTime;
     }
 
-    public void setLeadTime(Date leadTime) {
+    public void setLeadTime(int leadTime) {
         this.leadTime = leadTime;
     }
 

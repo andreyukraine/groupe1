@@ -8,20 +8,25 @@ import ua.artcode.model.*;
  */
 public class IModeratorControllerImp implements IModeratorController {
 
+    Service [] services;
+    Company [] companies;
+    Worker [] workers;
 
+    //TODO  reducted удалено компанию от модератора
     @Override
-    public Moderator register(String fullname, String email, String pass, String role, Company company) {
-        Moderator moderator= new Moderator(fullname,email,pass,"","",company);
+    public Moderator register(String fullname, String email, String phone, String pass, String role) {
+        Moderator moderator= new Moderator(fullname, email, phone, pass, role);
         return moderator;
     }
 
+    //TODO  reducted  изменено create на add
     @Override
-    public Company createCompany(Company company) {
-        return null;
+    public boolean addCompany(Company company) {
+        return false;
     }
 
     @Override
-    public Company editCompany(Company company) {
+    public Company editCompany(String nameCompany, String newNameCompany) {
         return null;
     }
 
@@ -31,18 +36,33 @@ public class IModeratorControllerImp implements IModeratorController {
     }
 
     @Override
-    public Company removeCompany(long companyId) {
-        return null;
+    public boolean removeCompany(long companyId) {
+        return false;
     }
 
     @Override
-    public Company addService(long companyId, Service service) {
-        return null;
+    public boolean addService(long companyId, Service service) {
+        return false;
     }
 
     @Override
-    public Company addWorkerToCompany(long companyId, long workerId) {
-        return null;
+    public boolean removeService(long serviceId) {
+        return false;
+    }
+
+    @Override
+    public Service[] chooseService(Service ... args) {
+        Service[] chooseArrayService = new Service[args.length];
+        return chooseArrayService;
+    }
+
+    public Worker createWorker(String fullName, String email, String phone, String pass){
+       return null;
+    }
+
+    @Override
+    public boolean addWorkerToCompany(long companyId, long workerId) {
+        return false;
     }
 
     @Override
@@ -50,24 +70,29 @@ public class IModeratorControllerImp implements IModeratorController {
         return null;
     }
 
-    @Override
-    public Service[] chooseService() {
-        return new Service[0];
-    }
+
 
     @Override
-    public Worker[] getOwnWorkers(long managerId) {
-        return new Worker[0];
+    public Worker[] getOwnWorkersInCompany(long companyId) {
+
+        // метод не закончен
+        Company company = new Company();
+        for (int i = 0; i < companies.length; i++) {
+            if (companies[i].getId() == companyId){
+                company = companies [i];
+                break;
+            }
+        }
+
+        Worker[] arrayWorkersInCompany = new Worker[company.getIndexOfWorker()];
+        return arrayWorkersInCompany;
     }
 
-    @Override
-    public Worker[] showAllFreeWorker(Status status) {
-        return new Worker[0];
-    }
+
 
     @Override
-    public Service asignServiceWorker(Worker worker) {
-        return null;
+    public boolean asignServiceWorker(Service service, Worker worker) {
+        return false;
     }
 
     @Override
@@ -80,13 +105,15 @@ public class IModeratorControllerImp implements IModeratorController {
         return null;
     }
 
-    @Override
-    public Service removeService(long serviceId) {
-        return null;
-    }
+
 
     @Override
     public Order assignStatusOrder(Order order, Status status) {
         return null;
+    }
+
+    @Override
+    public Worker[] showAllFreeWorker(Status status) {
+        return new Worker[0];
     }
 }

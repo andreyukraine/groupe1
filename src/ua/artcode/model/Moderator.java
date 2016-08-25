@@ -15,12 +15,13 @@ public class Moderator extends User{
 
     // constructors --------------------------------------------------------------------------------
 
-    public Moderator(String fullname, String email, String phone, String pass, String role, Company company) {
+   /* public Moderator(String fullname, String email, String phone, String pass, String role, Company company) {
         super(fullname, email, phone, pass, role);
         this.company = company;
-    }
+    }*/
 
-    public Moderator() {
+    public Moderator(String fullname ,String email, String phone, String pass, String role) {
+        super(fullname, email, phone, pass, role);
     }
 
     // geters & seters -----------------------------------------------------------------------------

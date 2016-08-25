@@ -15,6 +15,13 @@ public class Company {
     private Service[] services;
     private Moderator moderator;
 
+
+
+    // TODO reduct добавлен индекс количества воркеров в компании
+    private int indexOfWorker;
+
+
+
     // constructors --------------------------------------------------------------------------------
     public Company(String nameCompany, Location location, String descriptionCompany, Moderator moderator) {
         this.nameCompany = nameCompany;
@@ -82,5 +89,13 @@ public class Company {
 
     public void setModerator(Moderator moderators) {
         this.moderator = moderators;
+    }
+
+    public void setIndexOfWorker(int indexOfWorker) {
+        this.indexOfWorker = indexOfWorker;
+    }
+
+    public int getIndexOfWorker() {
+        return indexOfWorker;
     }
 }

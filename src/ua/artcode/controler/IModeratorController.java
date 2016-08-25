@@ -11,40 +11,46 @@ public interface IModeratorController {
     // @return company with id
 
     // зарегистрация
-    Moderator register(String fullname, String email, String pass, String role, Company company);
+    //TODO  reducted удалено компанию от модератора
+    Moderator register(String fullname, String email, String phone, String pass, String role);
 
     // создаем компанию
-    Company createCompany(Company company);
+    boolean addCompany(Company company);
 
     // изменяем данные про компанию
-    Company editCompany(Company company);
+    Company editCompany(String nameCompany, String newNameCompany);
 
     // ищем компанию
     Company findCompany(long companyId);
 
     // удаляем компанию
-    Company removeCompany(long companyId);
+    boolean removeCompany(long companyId);
 
     // добавить сервис компании
-    Company addService(long companyId, Service service);
+    boolean addService(long companyId, Service service);
+
+    //удалить сервис
+    boolean removeService(long serviceId);
+
+    //выбрать сервис
+    Service[] chooseService(Service ... args);
+
+    Worker createWorker(String fullName, String email, String phone, String pass);
 
     // добавить сотрудника в компанию
-    Company addWorkerToCompany(long companyId, long workerId);
+    boolean addWorkerToCompany(long companyId, long workerId);
+
 
     //передаем заказ в работу сотруднику
     Worker asignOrderWorker(Order order, long workerId);
 
-    //выбрать сервис
-    Service[] chooseService();
-
     // посмотреть всех сотрудников
-    Worker[] getOwnWorkers(long managerId);
-
-    //посмотреть всех свободных сотрудников
-    Worker[] showAllFreeWorker(Status status);
+    // TODO reduct добавлен параметр компания (посмотреть всех сотрудников в компании)
+    Worker[] getOwnWorkersInCompany(long companyId);
 
     //назначить сервису работника
-    Service asignServiceWorker(Worker worker);
+    //TODO reducted добавлин параметр service и вывод boolean
+    boolean asignServiceWorker(Service service, Worker worker);
 
     //удалить сотрудника с компании
     Worker[] removeWorker(long workerId);
@@ -52,10 +58,10 @@ public interface IModeratorController {
     // редактировать сотрудника
     Worker editWorker(long workerId);
 
-    //удалить сервис
-    Service removeService(long serviceId);
-
     // изменить статус заказа
     Order assignStatusOrder(Order order, Status status);
+
+    //посмотреть всех свободных сотрудников
+    Worker[] showAllFreeWorker(Status status);
 
 }
