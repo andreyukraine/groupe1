@@ -7,40 +7,44 @@ import ua.artcode.model.*;
 public interface IModeratorPSAController {
 
     //регистрация
-    ModeratorPSA register(String nameModerator, String email, String pass);
+    ModeratorPSA register(String fullname, String email, String phone, String pass, String role);
 
     //добавить сервис
-    Service createService(String nameService, String descriptionService);
+
+    Service[] createService(String nameService, String descriptionService);
 
     //удалить сервис
-    Service removeService(long serviceId);
+    Service[] removeService(long serviceId);
+
+    //редактировать сервис
+    Service[] editService(long serviceId, Service service);
 
     //добавить компанию
-    Company addCompany(Company company);
+    //Company[] addCompany(Company company);
+
+    //подтвердить/отказать добавление компании
+    Company[] changeStatusCompany(Company company);
 
     //удалить компанию
-    Company removeCompany(long companyId);
+    Company[] removeCompany(long companyId);
 
-    //ответить на коментарий
+    //ответить на коментарий сервиса PSA
     Comment replyToComment(long commentID, Comment comment);
 
-    //удалить комментарий
+    //удалить комментарий сервиса PSA
     Comment removeComment(long commentID);
 
     //добавить пользователя
-    User addUser(User user);
+    User[] addUser(User user);
 
     //изменить пользователя
-    User editUser(long userId, User user);
+    User[] editUser(long userId, User user);
 
     //удалить пользователя
-    User removeUser(long userId);
+    User[] removeUser(long userId);
 
     //посмотреть все компании
     Company[] listAllCompany();
-
-    //редактировать сервис
-    Service editService(long id);
 
     //посмотреть все сервисы
     Service[] listAllService();

@@ -8,11 +8,11 @@ public class ModeratorPSA extends User{
 
 
 
-    Company[] companies;
-    Moderator[] moderators;
-    Worker[] workers;
-    Service[] services;
-    Comment[] comments;
+    private Company[] companies;
+    private Moderator[] moderators;
+    private Worker[] workers;
+    private Service[] services;
+    private Comment[] comments;
 
     // constructors --------------------------------------------------------------------------------
 

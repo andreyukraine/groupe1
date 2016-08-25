@@ -9,7 +9,7 @@ public class Company {
     private String nameCompany;
     private Location location;
     private String descriptionCompany;
-
+    private String changeStatusCompany;
     private Worker[] workers;
     private Comment[] comments;
     private Moderator[] moderators;
@@ -21,6 +21,7 @@ public class Company {
         this.descriptionCompany = descriptionCompany;
         this.workers = workers;
         this.moderators = moderators;
+        this.changeStatusCompany = "new";
     }
 
     // geters & seters -----------------------------------------------------------------------------
