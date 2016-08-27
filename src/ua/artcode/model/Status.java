@@ -5,6 +5,7 @@ package ua.artcode.model;
  */
 public class Status {
 
+
     //статус работника
 
         //-free

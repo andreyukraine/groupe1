@@ -14,7 +14,7 @@ public class Order {
     // не правильно, лид тайм int
     private int leadTime;
     private Service service;
-    private User user;
+    private Client client;  //изменила юзер на клиент
     private Worker worker;
     private String descriptionOrder;
     private Status status;
@@ -22,10 +22,10 @@ public class Order {
     // constructors --------------------------------------------------------------------------------
 
 
-    public Order(int leadTime, Service service, User user, String descriptionOrder) {
+    public Order(int leadTime, Service service, Client client, String descriptionOrder) {
         this.leadTime = leadTime;
         this.service = service;
-        this.user = user;
+        this.client = client;
         this.descriptionOrder = descriptionOrder;
 
     }
@@ -83,12 +83,12 @@ public class Order {
         this.service = service;
     }
 
-    public User getUser() {
-        return user;
+    public Client getClient() {
+        return client;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Worker getWorker() {

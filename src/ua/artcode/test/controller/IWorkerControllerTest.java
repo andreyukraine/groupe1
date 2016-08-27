@@ -2,7 +2,9 @@ package ua.artcode.test.controller;
 
 import ua.artcode.controler.IWorkerController;
 import ua.artcode.controler.IWorkerControllerImp;
+import ua.artcode.model.Order;
 import ua.artcode.model.Service;
+
 import ua.artcode.model.Worker;
 
 
@@ -14,6 +16,7 @@ public class IWorkerControllerTest {
     static IWorkerController iWorkerController = new IWorkerControllerImp();
     public static Service[] services = new Service[10];
     public static Worker[] workers = new Worker[10];
+    public static Order[] orders = new Order[10];
 
     public static void main(String[] args) {
 
@@ -33,14 +36,13 @@ public class IWorkerControllerTest {
         services[3] = service3;
         services[4] = service4;
 
-
         service.setWorkers(workers);
 
-        iWorkerController.myServices(workers);
 
         registerTest(worker.getFullname(), worker.getEmail(), worker.getPhone(),
                 worker.getPass(), worker.getDescriptionWorker(), worker);
         TestMyServices(service);
+
     }
 
 
