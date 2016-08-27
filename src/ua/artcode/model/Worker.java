@@ -1,32 +1,32 @@
 package ua.artcode.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  * Created by IT on 21.08.2016.
  */
-public class Worker extends User{
+public class Worker extends User {
 
     //w+1
     //w+2
-    Company company;
-    String descriptionWorker;
-    Status status;
-    Rate rateWorker;
+    private Company company;
+    private String descriptionWorker;
+    private Status status;
+    private Rate rateWorker;
 
-    Service[] service;
-    Order[] orders;
+    private Service[] service;
+    private Order[] orders;
 
 
     // constructors --------------------------------------------------------------------------------
 
-    public Worker(String fullname, String email, String phone,  String pass, String descriptionWorker) {
+    public Worker(String fullname, String email, String phone, String pass, String descriptionWorker) {
+
         super(fullname, email, phone, pass, descriptionWorker);
         this.descriptionWorker = descriptionWorker;
     }
 
-    public Worker(String lada, String s, String s1, String s2, String worker, Company company, String bla, Status status) {
-    }
 
     // geters & seters -----------------------------------------------------------------------------
 

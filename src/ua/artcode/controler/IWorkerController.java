@@ -8,10 +8,10 @@ import ua.artcode.model.*;
 public interface IWorkerController {
 
     //регистрация
-    Worker register(String nameWorker, Company company, String descriptionWorker, Status status, String email, String pass);
+    Worker register(String fullname, String email, String phone, String pass, String descriptionWorker);
 
     //посмотреть все закрепленные сервисы
-    Service[] myServices(Worker worker);
+    Service myServices(Worker worker);
 
     //статус сотрудника
     Status statusWorker(int statusIndex);

@@ -2,19 +2,28 @@ package ua.artcode.controler;
 
 import ua.artcode.model.*;
 
+//import static ua.artcode.test.controller.IWorkerControllerTest.services;
+
+
 /**
  * Created by IT on 22.08.2016.
  */
 public class IWorkerControllerImp implements IWorkerController {
     @Override
-    public Worker register(String fullname, Company company, String descriptionWorker, Status status, String email, String pass) {
-        Worker worker= new Worker(fullname, email, "", pass, "", company, descriptionWorker, status);
+    public Worker register(String fullname, String email, String phone, String pass, String descriptionWorker) {
+
+        Worker worker = new Worker(fullname, email, phone, pass, descriptionWorker);
         return worker;
     }
 
     @Override
-    public Service[] myServices(Worker worker) {
-        return new Service[0];
+    public Service myServices(Worker worker) {
+        /*for (int i = 0; i < services.length; i++) {
+            if(services[i].getWorkers().equals(worker)) {
+                return services[i];
+            }
+        }*/
+        return null;
     }
 
     @Override
