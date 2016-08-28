@@ -13,9 +13,6 @@ public interface IWorkerController {
     //посмотреть все закрепленные сервисы
     Service myServices(Worker[] worker);
 
-    //статус сотрудника
-    Status statusWorker(int statusIndex);
-
     //заказы сотрудника
     Order[] ordersWorker(Worker worker);
 

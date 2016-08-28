@@ -26,10 +26,6 @@ public class IWorkerControllerImp implements IWorkerController {
         return null;
     }
 
-    @Override
-    public Status statusWorker(int statusIndex) {
-        return null;
-    }
 
     @Override
     public Order[] ordersWorker(Worker worker) {

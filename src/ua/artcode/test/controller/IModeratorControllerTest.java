@@ -24,7 +24,7 @@ public class IModeratorControllerTest {
         worker1.setCompany(company);
         Worker worker2 = new Worker("Narkosha", "narkosha@gmail.com", "3459349", "78744", "Разноробочий");
         worker2.setCompany(company);
-        User client = new Client("Vnya", "vanya@gmail.com", "33434", "23423", "client");
+        Client client = new Client("Vnya", "vanya@gmail.com", "33434", "23423", "client");
         Order order = new Order(2, service, client, "настроить АТС Панасоник");
         //тестирование метода регистрации
         testRegister(moderator);
