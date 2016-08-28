@@ -2,6 +2,7 @@ package ua.artcode.test.controller;
 
 import ua.artcode.controler.IWorkerController;
 import ua.artcode.controler.IWorkerControllerImp;
+import ua.artcode.model.Client;
 import ua.artcode.model.Order;
 import ua.artcode.model.Service;
 
@@ -38,13 +39,17 @@ public class IWorkerControllerTest {
 
         service.setWorkers(workers);
 
+        Client client = new Client("Gena", "krokodil@mail.ru", "245", "cheburashka", "client");
+        Order order = new Order(10, service, client, "cut surrouded trees");
+        orders[0] = order;
+        worker.setOrders(orders);
+
 
         registerTest(worker.getFullname(), worker.getEmail(), worker.getPhone(),
                 worker.getPass(), worker.getDescriptionWorker(), worker);
-        TestMyServices(service);
+
 
     }
-
 
     static boolean registerTest(String fullname, String email, String phone, String pass,
                                 String descriptionWorker, Worker worker1) {
@@ -59,20 +64,7 @@ public class IWorkerControllerTest {
         return booleanCheck;
     }
 
-    public static boolean TestMyServices(Service service) {
-        Service serviceTest = iWorkerController.myServices(workers);
-        for (int i = 0; (i < services.length) & (services[i] != null); i++) {
-            if (services[i].equals(service)) {
 
-                boolean booleanCheck = services[i].getWorkers().equals(workers);
-                System.out.printf("res %s, method %s, ex %s = practical %s\n",
-                        booleanCheck, "TestMyServices", service.getNameService(), services[i].getNameService());
-                return booleanCheck;
-
-            }
-        }
-        return false;
-    }
 }
 
 

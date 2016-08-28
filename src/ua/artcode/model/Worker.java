@@ -62,7 +62,7 @@ public class Worker extends User {
         this.rateWorker = rateWorker;
     }
 
-    public Service[] getService() {
+    public Service[] getServices() {
         return service;
     }
 

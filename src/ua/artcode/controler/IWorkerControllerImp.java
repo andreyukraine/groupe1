@@ -2,7 +2,7 @@ package ua.artcode.controler;
 
 import ua.artcode.model.*;
 
-import static ua.artcode.test.controller.IWorkerControllerTest.services;
+import static ua.artcode.test.controller.IWorkerControllerTest.orders;
 
 
 /**
@@ -17,23 +17,18 @@ public class IWorkerControllerImp implements IWorkerController {
     }
 
     @Override
-    public Service myServices(Worker[] worker) {
-        for (int i = 0; i < services.length; i++) {
-            if(services[i].getWorkers().equals(worker)) {
-                return services[i];
-            }
+    public Service[] myServices(Worker worker) {
+       return worker.getServices();
+
+    }
+
+    @Override
+    public Order ordersWorker(Worker worker) {
+        for (int i = 0; i < orders.length; i++) {
+            if(orders[i].getWorker().equals(worker))
+                return orders[i];
         }
         return null;
-    }
-
-    @Override
-    public Status statusWorker(int statusIndex) {
-        return null;
-    }
-
-    @Override
-    public Order[] ordersWorker(Worker worker) {
-        return new Order[0];
     }
 
     @Override
