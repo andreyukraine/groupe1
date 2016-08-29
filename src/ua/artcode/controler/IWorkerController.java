@@ -11,7 +11,7 @@ public interface IWorkerController {
     Worker register(String fullname, String email, String phone, String pass, String descriptionWorker);
 
     //посмотреть все закрепленные сервисы
-    Service myServices(Worker[] worker);
+    Service[] myServices(Worker worker);
 
     //заказы сотрудника
     Order[] ordersWorker(Worker worker);

@@ -23,11 +23,7 @@ public class IWorkerControllerImp implements IWorkerController {
     }
 
     @Override
-    public Order ordersWorker(Worker worker) {
-        for (int i = 0; i < orders.length; i++) {
-            if(orders[i].getWorker().equals(worker))
-                return orders[i];
-        }
+    public Order[] ordersWorker(Worker worker) {
         return null;
     }
 
