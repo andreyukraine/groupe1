@@ -12,7 +12,6 @@ public interface IModeratorPSAController {
     public Service addService(String nameService, String descriptionService);
 
     //добавить сервис
-
     Service createService(String nameService, String descriptionService);
 
     //удалить сервис
