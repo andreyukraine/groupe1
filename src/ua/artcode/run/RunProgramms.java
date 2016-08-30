@@ -27,6 +27,7 @@ public class RunProgramms {
         LoginView loginView =
                 new LoginView(new Scanner(System.in),iModeratorPSAController, iModeratorController,iWorkerController,iClientController);
         loginView.showLoginMenu();
+
     }
 
 }

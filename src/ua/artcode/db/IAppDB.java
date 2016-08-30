@@ -1,5 +1,6 @@
 package ua.artcode.db;
 
+import ua.artcode.exceptions.ServiceNotUpdateException;
 import ua.artcode.model.Company;
 import ua.artcode.model.Service;
 
@@ -10,5 +11,5 @@ public interface IAppDB {
 
     //
     Service addService(Service service);
-    Service updateService(long serviceId, Service service);
+    Service updateService(long serviceId, Service service) throws ServiceNotUpdateException;
 }

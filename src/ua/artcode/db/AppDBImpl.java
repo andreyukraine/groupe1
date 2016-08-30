@@ -21,20 +21,16 @@ public class AppDBImpl implements IAppDB {
         return service;
     }
 
-    public Service updateService(long serviceId, Service service){
+    public Service updateService(long serviceId, Service service) throws ServiceNotUpdateException{
 
-            for (int i = 0; i < services.size(); i++) {
-                if (services.get(i).getId() == serviceId){
-                    services.set(i, service);
-                    return service;
-                }
+        for (int i = 0; i < services.size(); i++) {
+            if (services.get(i).getId() == serviceId) {
+                services.set(i, service);
+                return service;
             }
-        try {
-            throw new ServiceNotUpdateException("Servise doesn't exist");
-        } catch (ServiceNotUpdateException e) {
-            e.printStackTrace();
         }
-        return null; //надо как-то правильно добавить exception, чтоб убрать return null;
+       throw new ServiceNotUpdateException("Service doesn't exist");
+
     }
 
     // constructors --------------------------------------------------------------------------------
@@ -53,10 +49,6 @@ public class AppDBImpl implements IAppDB {
 
     public List<Company> getCompanies() {
         return companies;
-    }
-
-    public void setCompanies(List<Company> companies) {
-        this.companies = companies;
     }
 
     public List<Client> getClients() {
