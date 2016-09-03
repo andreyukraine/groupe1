@@ -15,53 +15,68 @@ public interface IModeratorController {
     Moderator register(String fullname, String email, String phone, String pass, String role);
 
     // создаем компанию
-    boolean addCompany(Company company);
+    Company addCompany(String nameCompany, String city, String descriptionCompany);
 
     // изменяем данные про компанию
-    Company editCompany(String nameCompany, String newNameCompany);
+    Company editCompany(String oldNameCompany, String newNameCompany, String description);
 
-    // ищем компанию
-    Company findCompany(long companyId);
+    // ищем компанию в базе приложения по имени
+    Company findCompany(String nameCompany);
+
+    //Найти воркера в базе приложения по имени
+    Worker findWorker(String nameWorker);
 
     // удаляем компанию
-    boolean removeCompany(long companyId);
+    boolean removeCompany(String nameCompany);
 
-    // добавить сервис компании
-    boolean addService(long companyId, Service service);
+    void showMyCompany();
 
-    //удалить сервис
-    boolean removeService(long serviceId);
+    // добавить сервис в список сервисов модератора
+    Service addService(String nameService);
+
+    //Присвоить сервис компании
+    Company asignServiceToCompany(String companyName, String serviceName);
+
+    // Удаление сервиса со списка сервисов модератора
+    boolean removeService(String serviceName);
+
+    // Наяти сервис среди сервисов модератора
+    Service findService(String serviceName);
 
     //выбрать сервис
     Service[] chooseService(Service ... args);
 
-    Worker createWorker(String fullName, String email, String phone, String pass);
+    Worker createWorker(String fullName, String email, String phone, String pass, String description, String role);
+
+    //удалить сотрудника с компании
+    boolean removeWorker(String workerName);
 
     // добавить сотрудника в компанию
-    boolean addWorkerToCompany(long companyId, long workerId);
+    Company asignWorkerToCompany(String companyName, String workerName);
 
+    void showMyWorkers();
 
     //передаем заказ в работу сотруднику
-    Worker asignOrderWorker(Order order, long workerId);
+    Worker asignOrderWorker(long idOrder, String workerName);
 
     // посмотреть всех сотрудников
     // TODO reduct добавлен параметр компания (посмотреть всех сотрудников в компании)
-    Worker[] getOwnWorkersInCompany(long companyId);
+    void showAllWorkersInCompany(String companyName);
 
     //назначить сервису работника
     //TODO reducted добавлин параметр service и вывод boolean
     boolean asignServiceWorker(Service service, Worker worker);
 
-    //удалить сотрудника с компании
-    Worker[] removeWorker(long workerId);
-
     // редактировать сотрудника
-    Worker editWorker(long workerId);
+    Worker editWorker (String oldWorkerName, String newWorkerName, String descriptionWorker);
 
     // изменить статус заказа
     Order assignStatusOrder(Order order, Status status);
-
+    // присвоить ордеру воркера
+    Order asignOrderToWorker(Order order, Worker worker);
     //посмотреть всех свободных сотрудников
     Worker[] showAllFreeWorker(Status status);
 
+
+    Order findOrder(long idOrder);
 }

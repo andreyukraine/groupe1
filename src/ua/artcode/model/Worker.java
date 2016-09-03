@@ -1,7 +1,10 @@
 package ua.artcode.model;
 
+import ua.artcode.controler.IModeratorController;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IT on 21.08.2016.
@@ -15,9 +18,16 @@ public class Worker extends User {
     private Status status;
     private Rate rateWorker;
 
-    private Service[] service;
-    private Order[] orders;
+    // TODO reduct for delete
+    //private Service[] service;
+    //private Order[] orders;
 
+    // TODO reduct добавлены List servicesOfWorker, ordersOfWorker, IModeratorController iModeratorController, indexOfOrder
+
+    private List<Service> servicesOfWorker = new ArrayList<>();
+    private List<Order> ordersOfWorker = new ArrayList<>();
+    private IModeratorController iModeratorController;
+    private long indexOfOrder;
 
     // constructors --------------------------------------------------------------------------------
 
@@ -27,6 +37,21 @@ public class Worker extends User {
         this.descriptionWorker = descriptionWorker;
     }
 
+    public Worker(String fullname, String email, String phone, String pass, String descriptionWorker, String role) {
+
+        super(fullname, email, phone, pass, descriptionWorker);
+        this.descriptionWorker = descriptionWorker;
+    }
+
+    // methods --------------------------------------------------------------------------------
+    public Order addOrder(long idOrder){
+
+        Order order = iModeratorController.findOrder(idOrder);
+        order.setId(indexOfOrder);
+        ordersOfWorker.add(order);
+        indexOfOrder++;
+        return order;
+    }
 
     // geters & seters -----------------------------------------------------------------------------
 
@@ -62,19 +87,19 @@ public class Worker extends User {
         this.rateWorker = rateWorker;
     }
 
-    public Service[] getServices() {
-        return service;
+    public List<Service> getServices() {
+        return servicesOfWorker;
     }
 
-    public void setService(Service[] service) {
-        this.service = service;
+    public void setService( List<Service> servicesOfWorker) {
+        this.servicesOfWorker = servicesOfWorker;
     }
 
-    public Order[] getOrders() {
-        return orders;
+    public List<Order> getOrders() {
+        return ordersOfWorker;
     }
 
-    public void setOrders(Order[] orders) {
-        this.orders = orders;
+    public void setOrders(List<Order> ordersOfWorker) {
+        this.ordersOfWorker = ordersOfWorker;
     }
 }

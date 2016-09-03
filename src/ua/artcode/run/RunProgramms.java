@@ -17,7 +17,7 @@ public class RunProgramms {
     public static void main(String[] args) {
 
         IModeratorPSAController iModeratorPSAController = new IModeratorPSAControllerImp();
-        IModeratorController iModeratorController = new IModeratorControllerImp();
+        IModeratorController iModeratorController = new IModeratorControllerImp(appDB);
         IWorkerController iWorkerController = new IWorkerControllerImp();
         IClientController iClientController = new IClientCotrollerImp();
 

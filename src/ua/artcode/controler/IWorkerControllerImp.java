@@ -2,13 +2,19 @@ package ua.artcode.controler;
 
 import ua.artcode.model.*;
 
-import static ua.artcode.test.controller.IWorkerControllerTest.orders;
+import java.util.ArrayList;
+import java.util.List;
+
+import static ua.artcode.test.controller.IWorkerControllerTest.*;
 
 
 /**
  * Created by IT on 22.08.2016.
  */
 public class IWorkerControllerImp implements IWorkerController {
+
+    private List<Service> myServices = new ArrayList<>();
+
     @Override
     public Worker register(String fullname, String email, String phone, String pass, String descriptionWorker) {
 
@@ -17,7 +23,7 @@ public class IWorkerControllerImp implements IWorkerController {
     }
 //Service --> Service[];
     @Override
-    public Service[] myServices(Worker worker) {
+    public List<Service> myServices(Worker worker) {
        return worker.getServices();
 
     }

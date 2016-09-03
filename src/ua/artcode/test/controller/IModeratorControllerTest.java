@@ -2,75 +2,99 @@ package ua.artcode.test.controller;
 
 import ua.artcode.controler.IModeratorController;
 import ua.artcode.controler.IModeratorControllerImp;
+import ua.artcode.db.AppDBImpl;
+import ua.artcode.db.IAppDB;
 import ua.artcode.model.*;
 
 public class IModeratorControllerTest {
 
 
     //TODO test
-    static IModeratorController iModeratorController = new IModeratorControllerImp();
+    static IAppDB copyAppDB = new AppDBImpl();
+    IModeratorController iModeratorController = new IModeratorControllerImp(copyAppDB);
 
     public static void main(String[] args) {
-        Moderator moderator = new Moderator("Andrey", "a.webears@gmail.com","2329382","123456", "moderator");
-        Company company = new Company("Рога&Копыта", null, "descriptionCompany", moderator);
-        company.setId(0);
-        Service service = new Service("Телефония", "настройка телефонной связи");
-        Service service1 = new Service("Телефония", "настройка телефонной связи");
-        Service service2 = new Service("IT", "настройка компьютерной сети");
-        Service service3 = new Service("оповещение", "установка оповешение в офисе");
 
-        User worker = new Worker("Rab", "rab@gmail.com", "3049349", "2344", "Разноробочий");
-        Worker worker1 = new Worker("Ivko", "ivko@gmail.com", "34549349", "87844", "Разноробочий");
-        worker1.setCompany(company);
-        Worker worker2 = new Worker("Narkosha", "narkosha@gmail.com", "3459349", "78744", "Разноробочий");
-        worker2.setCompany(company);
-        Client client = new Client("Vnya", "vanya@gmail.com", "33434", "23423", "client");
-        Order order = new Order(2, service, client, "настроить АТС Панасоник");
+        Moderator moderator = new Moderator("Andrey", "a.webears@gmail.com","2329382","123456", "moderator");
+
+        Company company1 = copyAppDB.addCompany("Рога&Копыта", "Kiev", "descriptionCompany");
+
+        Company company2 = copyAppDB.addCompany("ЧП Туалет", "Kiev", "новый вид продвинутых компани");
+
+        Service service = new Service("Телефония", "настройка телефонной связи");
+        copyAppDB.addService(service);
+
+        Service service1 = new Service("Телефония", "настройка телефонной связи");
+        copyAppDB.addService(service1);
+
+        Service service2 = new Service("IT", "настройка компьютерной сети");
+        copyAppDB.addService(service2);
+
+        Service service3 = new Service("оповещение", "установка оповешение в офисе");
+        copyAppDB.addService(service3);
+
+        copyAppDB.addWorker("Rab", "rab@gmail.com", "3049349", "2344", "wewew", "Worker");
+
+        Worker worker1 = copyAppDB.addWorker("Ivko", "ivko@gmail.com", "34549349", "87844", "Разноробочий", "Worker");
+        worker1.setCompany(company1);
+
+        Worker worker2 = copyAppDB.addWorker("Narkosha", "narkosha@gmail.com", "3459349", "78744", "Разноробочий", "Worker");
+        worker2.setCompany(company1);
+
+        Client client1 = copyAppDB.addClient("Anya", "anya@gmail.com", "343434", "2783", "client");
+
+        Client client2 = copyAppDB.addClient("Yula", "yulya@gmail.com", "67634", "23423", "client");
+
+        Order order = new Order(2, service, client1, "настроить АТС Панасоник");
         //тестирование метода регистрации
-        testRegister(moderator);
-        testAddCompany(company);
-        testEditCompany(company);
-        testFindCompany(company);
-        testRemoveCompany(company);
-        testAddService(company, service);
-        testRemoveService(service3);
-        testChooseService(service1, service2, service3);
-        testCreateWorker(worker);
-        testAddWorkerToCompany(company, worker);
-        testAsignOrderWorker(order, worker);
+        //testRegister(moderator);
+        //testAddCompany(company1);
+        //testEditCompany(company1);
+        //testFindCompany(company1);
+        //testRemoveCompany(company);
+        //testAddService(company, service);
+        //testRemoveService(service3);
+        //testChooseService(service1, service2, service3);
+        //testCreateWorker(worker);
+        //testAddWorkerToCompany(company, worker);
+        //testAsignOrderWorker(order, worker);
         //метод нуждается в доработке
-       // testGetOwnWorkersInCompany(company, worker1, worker2);
-        testAsignServiceWorker(service, worker1);
-        testAsignServiceWorker(service, worker1);
+        // testGetOwnWorkersInCompany(company, worker1, worker2);
+        //testAsignServiceWorker(service, worker1);
+        //testAsignServiceWorker(service, worker1);
     }
 
 
+/*
     static void testRegister(Moderator moderator){
 
+        System.out.println("Проверка метода Moderator register");
+        IModeratorController iModeratorControllerImp = new IModeratorControllerImp(copyAppDB);
         // проверка создания обьекта с указанными параметрами
         Moderator excepted = moderator;
-        Moderator practical = iModeratorController.register(moderator.getFullname(), moderator.getEmail(), moderator.getPhone(), moderator.getPass(), moderator.getRole());
+        Moderator practical = iModeratorControllerImp.register(moderator.getFullname(), moderator.getEmail(), moderator.getPhone(), moderator.getPass(), moderator.getRole());
+
         boolean res1 = excepted.getFullname().equals(practical.getFullname()) &&
-                    excepted.getEmail().equals(practical.getEmail()) &&
-                    excepted.getPhone().equals(practical.getPhone()) &&
-                    excepted.getPass().equals(practical.getPass()) &&
-                    excepted.getRole().equals(practical.getRole());
+                excepted.getEmail().equals(practical.getEmail()) &&
+                excepted.getPhone().equals(practical.getPhone()) &&
+                excepted.getPass().equals(practical.getPass()) &&
+                excepted.getRole().equals(practical.getRole());
 
 
 
         // Проверка на указание пустого поля имени, эмейла, телефона, пароля или роли
-       Moderator excepted1 = null;
-       Moderator pract0 = iModeratorController.register("","a.webears@gmail.com","2329382","123456", "moderator");
-        Moderator pract1 = iModeratorController.register("Andrey","","2329382","123456", "ssd");
-       Moderator pract2 = iModeratorController.register("Andrey","a.webears@gmail.com","","123456", "moderator");
-        Moderator pract3 = iModeratorController.register("Andrey","a.webears@gmail.com","2329382","", "moderator");
-        Moderator pract4 = iModeratorController.register("Andrey","a.webears@gmail.com","2329382","", "");
+        Moderator excepted1 = null;
+        Moderator pract0 = iModeratorControllerImp.register("","a.webears@gmail.com","2329382","123456", "moderator");
+        Moderator pract1 = iModeratorControllerImp.register("Andrey","","2329382","123456", "ssd");
+        Moderator pract2 = iModeratorControllerImp.register("Andrey","a.webears@gmail.com","","123456", "moderator");
+        Moderator pract3 = iModeratorControllerImp.register("Andrey","a.webears@gmail.com","2329382","", "moderator");
+        Moderator pract4 = iModeratorControllerImp.register("Andrey","a.webears@gmail.com","2329382","reree", "");
 
         boolean res2 = pract0 == null &&
-                        pract1 == null &&
-                        pract2 == null &&
-                        pract3 == null &&
-                        pract4 == null;
+                pract1 == null &&
+                pract2 == null &&
+                pract3 == null &&
+                pract4 == null;
 
         System.out.printf("Result %s, test %s",
                 res1, "metod register\n");
@@ -78,69 +102,81 @@ public class IModeratorControllerTest {
                 res2, " metod register for empty String parameter\n");
     }
 
-        static void testAddCompany(Company company){
+    static void testAddCompany(Company company){
+        System.out.println("Проверка метода AddCompany");
+        // запись айди тестовой компании
+        long id = company.getId();
+        // Запись тестовой компании в базу
+        Company practical = copyAppDB.addCompany(company);
+        // Получение тестовой компании с базы
+        Company expected = copyAppDB.getCompany(id);
+        //сравнение названий компаний
+        boolean res = expected.getNameCompany().equals(practical.getNameCompany());
+        // Вывод результата сравнения на экран
+        System.out.printf("Result: %s, test: %s, expected: %s, practical: %s\n",
+                res, " metod addCompany", expected.toString(), practical.toString());
 
-            boolean expected = true;
-            boolean practical = iModeratorController.addCompany(company);
+        //Негативный тест компании
+        Company testCompany = null;
+        // Запись тестовой компании в базу
+        expected = copyAppDB.addCompany(testCompany);
+        if(expected==null){
+            res = true;
+        } else res = false;
+        // Вывод результата сравнения на экран
+        System.out.printf("Result: %s, test: %s, expected: %s\n",
+                res, " for null exception ", expected != null ? expected.toString() : "null");
 
-            System.out.printf("Result %s test %s expected %s practical %s\n",
-                    expected == practical, " metod addCompany", expected, practical);
+    }
 
-            Company testCompany = null;
-            boolean expected1 = false;
-            boolean practical1 = iModeratorController.addCompany(testCompany);
-            System.out.printf("Result %s test %s expected %s practical %s\n",
-                    expected1 == practical1, " metod addCompany for null", expected1, practical1);
 
+    static void testEditCompany(Company company1){
+
+        System.out.println("Проверка метода EditCompany");
+
+        IModeratorController iModeratorController = new IModeratorControllerImp(copyAppDB);
+
+        String oldName = company1.getNameCompany();
+        long id = company1.getId();
+
+        Company newCompany = iModeratorController.editCompany(company1.getId(), "Bowls");
+        boolean res = true;
+        if (newCompany != null) {
+            res = copyAppDB.getCompany(id).getNameCompany().equals(oldName);
         }
+        System.out.printf("Result: %s, test: %s, expected: %s, practical %s\n",
+                !res, " metod editCompany", "Bowls", newCompany != null ? newCompany.getNameCompany() : "null");
+    }
 
+    static void testFindCompany(Company company){
 
-        static void testEditCompany(Company company){
+        System.out.println("Проверка метода FindCompany");
 
-            String oldName = company.getNameCompany();
-            Company newCompany = iModeratorController.editCompany(oldName, "Bowls");
-            boolean res = false;
-            if (newCompany != null) {
-                res = oldName.equals(newCompany.getNameCompany());
-            }
-            System.out.printf("Result %s test %s expected %s practical %s\n",
-                    !res, " metod editCompany", oldName, newCompany != null ? newCompany.getNameCompany() : "null");
+        Company findCompany = copyAppDB.findCompany(company.getNameCompany());
 
-            boolean res2 = false;
-            Company newCompany1 = iModeratorController.editCompany(oldName, "");
-            if (newCompany != null) {
-                res2 = oldName.equals(newCompany1.getNameCompany());
-            }
-            System.out.printf("Result %s test %s expected %s practical %s\n",
-                    !res, " metod editCompany for empty value", "Bowls", newCompany1 != null ? newCompany1.getNameCompany() : "null");
+        System.out.printf("Result %s test %s expected %s practical %s\n",
+                findCompany == company, " metod finfCompany ", company.getNameCompany(), findCompany != null ? findCompany.getNameCompany(): "null");
 
-        }
+    }
 
-        static void testFindCompany(Company company){
-
-           Company resCompany = iModeratorController.findCompany(company.getId());
-
-            System.out.printf("Result %s test %s expected %s practical %s\n",
-                    resCompany == company, " metod finfCompany ", company.getNameCompany(), resCompany != null ? resCompany.getNameCompany(): "null");
-
-        }
-
-        static void testRemoveCompany(Company company){
-
-            boolean expected = true;
-            boolean practical = iModeratorController.removeCompany(company.getId());
-
-            System.out.printf("Result %s test %s expected %s practical %s\n",
-                    expected == practical, " metod removeCompany", expected, practical);
-
-
-        }
-
-
-    static void testAddService(Company company, Service service){
-
+    static void testRemoveCompany(Company company){
+        IModeratorController iModeratorController = new IModeratorControllerImp(copyAppDB);
         boolean expected = true;
-        boolean practical = iModeratorController.addService(company.getId(), service);
+        boolean practical = iModeratorController.removeCompany(company.getId());
+
+        System.out.printf("Result %s test %s expected %s practical %s\n",
+                expected == practical, " metod removeCompany", expected, practical);
+
+
+    }
+
+
+
+*/
+/*static void testAddService(Company company, Service service){
+        IModeratorController iModeratorController = new IModeratorControllerImp(copyAppDB);
+        boolean expected = true;
+        boolean practical = iModeratorController.addService(company, service);
 
         System.out.printf("Result %s test %s expected %s practical %s\n",
                 expected == practical, " metod addService", expected, practical);
@@ -151,10 +187,12 @@ public class IModeratorControllerTest {
         System.out.printf("Result %s test %s expected %s practical %s\n",
                 expected1 == practical1, " metod addService for null", expected1, practical1);
 
-    }
+    }*//*
 
 
-    static void testRemoveService(Service service){
+    */
+/*static void testRemoveService(Service service){
+        IModeratorController iModeratorController = new IModeratorControllerImp(copyAppDB);
         String oldName = service.getNameService();
         long id = service.getId();
         // результат метода удаления сервиса
@@ -172,10 +210,11 @@ public class IModeratorControllerTest {
         System.out.printf("Result %s test %s expected %s practical %s\n",
                 res, " metod AsignOrderWorker ", "true", res);
 
-    }
+    }*//*
+
 
     static void testChooseService(Service service1, Service service2, Service service3){
-
+        IModeratorController iModeratorController = new IModeratorControllerImp(copyAppDB);
         Service[] testArray = iModeratorController.chooseService(service1, service2, service3);
         boolean result;
         if (testArray != null) {
@@ -197,19 +236,19 @@ public class IModeratorControllerTest {
 
 
     static void testCreateWorker(User worker){
-
+        IModeratorController iModeratorController = new IModeratorControllerImp(copyAppDB);
         // проверка создания обьекта с указанными параметрами
         User excepted = worker;
         boolean res1;
         User practical = iModeratorController.createWorker(worker.getFullname(), worker.getEmail(), worker.getPhone(), worker.getPass());
         if (practical == null){
-        res1 = false;
-            } else {
-                    res1 = excepted.getFullname().equals(practical.getFullname()) &&
+            res1 = false;
+        } else {
+            res1 = excepted.getFullname().equals(practical.getFullname()) &&
                     excepted.getEmail().equals(practical.getEmail()) &&
                     excepted.getPhone().equals(practical.getPhone()) &&
                     excepted.getPass().equals(practical.getPass());
-            }
+        }
 
 
         // Проверка на указание пустого поля имени, эмейла, телефона, пароля или роли
@@ -231,7 +270,7 @@ public class IModeratorControllerTest {
     }
 
     static void testAddWorkerToCompany(Company company, User worker){
-
+        IModeratorController iModeratorController = new IModeratorControllerImp(copyAppDB);
         boolean res = iModeratorController.addWorkerToCompany(company.getId(), worker.getId());
 
         System.out.printf("Result %s test %s expected %s practical %s\n",
@@ -240,7 +279,7 @@ public class IModeratorControllerTest {
     }
 
     static void testAsignOrderWorker(Order order, User worker){
-
+        IModeratorController iModeratorController = new IModeratorControllerImp(copyAppDB);
         Worker workerWithOrder = iModeratorController.asignOrderWorker(order, worker.getId());
         boolean res = false;
         if (workerWithOrder != null) {
@@ -264,7 +303,8 @@ public class IModeratorControllerTest {
 
 
     // не проверен, нуждается в доработке
-   /* static void testGetOwnWorkersInCompany(Company company, Worker worker1, Worker worker2){
+   */
+/* static void testGetOwnWorkersInCompany(Company company, Worker worker1, Worker worker2){
 
         Worker [] arrayWorker = new Worker[2];
         arrayWorker = iModeratorController.getOwnWorkersInCompany(company.getId());
@@ -282,27 +322,31 @@ public class IModeratorControllerTest {
 
         System.out.printf("Result %s test %s expected %s practical %s\n",
                 result, " metod getOwnWorkers ", "true", result);
-    }*/
+    }*//*
+
 
 
     static void testAsignServiceWorker(Service service, Worker worker){
-
+        IModeratorController iModeratorController = new IModeratorControllerImp(copyAppDB);
         boolean res = iModeratorController.asignServiceWorker(service, worker);
 
         // проверка, назначе ли сервису работник
-      /* boolean res2 = false;
-       Service [] testService = worker.getServices();
+      */
+/* boolean res2 = false;
+       Service [] testService = worker.getService();
         for (int i = 0; i < testService.length; i++) {
-            if (testService.equals(worker.getServices())) {
+            if (testService.equals(worker.getService())) {
                 res2 = true;
                 break;
             }
-        }*/
+        }*//*
 
-       System.out.printf("Result %s test %s expected %s practical %s\n",
+
+        System.out.printf("Result %s test %s expected %s practical %s\n",
                 res, " metod testAsignServiceWorker ", "true", res);
 
     }
+*/
 
 
 }
