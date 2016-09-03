@@ -39,6 +39,7 @@ public class Company {
         this.descriptionCompany = descriptionCompany;
         this.moderator = moderator;
         this.changeStatusCompany = "new";
+        this.id = indexOfCompany++;
     }
 
     // TODO reduct 3.09.16 Добавлен перегруженный конструктор
@@ -47,6 +48,7 @@ public class Company {
         this.city = city;
         this.descriptionCompany = descriptionCompany;
         this.changeStatusCompany = "new";
+        this.id = indexOfCompany++;
     }
 
 
@@ -58,15 +60,14 @@ public class Company {
 
     //Добавить сервис в список сервисов компаний
 
-    public Service addService(String serviceName){
-        if (serviceName.length() == 0){
+    public Service addService(Service service){
+        if (service == null){
             return null;
         }
 
-        Service service = iModeratorController.findService(serviceName);
-        service.setId(indexOfService);
         servicesOfCompany.add(service);
         indexOfService++;
+
         return service;
     }
 
@@ -139,12 +140,16 @@ public class Company {
         this.commentsOfCompany = commentsOfCompany;
     }
 
+    public void setService(Service service) {
+        this.commentsOfCompany = commentsOfCompany;
+    }
+
     public Moderator getModerator() {
         return moderator;
     }
 
-    public void setModerator(Moderator moderators) {
-        this.moderator = moderators;
+    public void setModerator(Moderator moderator) {
+        this.moderator = moderator;
     }
 
     public void setIndexOfWorker(int indexOfWorker) {

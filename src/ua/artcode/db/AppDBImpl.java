@@ -11,15 +11,9 @@ import java.util.List;
  */
 public class AppDBImpl implements IAppDB {
 
-   /* private List<Company> companies;
-    private List<Client> clients;
-    private List<Moderator> moderator;
-    private List<Service> services;*/
-
     private List<Company> companies = new ArrayList<Company>();
     private List<Moderator> moderators = new ArrayList<>();
     private List<Service> services = new ArrayList<>();
-    private List<User> users = new ArrayList<>();
     private List<Worker> workers = new ArrayList<>();
     private List<Client> clients = new ArrayList<>();
     private List<Order> orders = new ArrayList<>();
@@ -130,12 +124,13 @@ public class AppDBImpl implements IAppDB {
         return company;
     }
 
-    Company addCompany(Company company){
+    public Company addCompany(Company company){
 
-
+        companies.add(company);
 
         return company;
     }
+
 
     @Override
     public boolean removeCompany(String nameCompany) {
@@ -327,19 +322,37 @@ public class AppDBImpl implements IAppDB {
 
     @Override
     public boolean removeOrder(long idOrder) {
+        orders.remove(idOrder);
         return false;
     }
 
     @Override
-    public Order editOrder(long idOrder, String oldDescription, String newDescription) {
+    public Order editOrder(long idOrder, String newDescription) {
+
+        for (int i = 0; i < orders.size(); i++) {
+            if (idOrder == orders.get(i).getId()) {
+                orders.get(i).setDescriptionOrder(newDescription);
+                Order order = orders.get(i);
+                return order;
+            }
+        }
         return null;
     }
 
     // Назначить статус заказа
-    public Order assignStatusOrder(Order order, Status status){return null;}
+    public Order assignStatusOrder(Order order, Status status){
+
+        order.setStatus(status);
+
+        return order;
+    }
 
     // Назначить заказу работника
-    public Order asignOrderToWorker(Order order, Worker worker){return null;}
+    public Order asignOrderToWorker(Order order, Worker worker){
+
+        order.setWorker(worker);
+        return order;
+    }
 
     /*public List<Company> getCompanies() {
         return companies;

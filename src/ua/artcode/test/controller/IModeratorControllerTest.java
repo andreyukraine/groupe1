@@ -15,12 +15,6 @@ public class IModeratorControllerTest {
 
     public static void main(String[] args) {
 
-        Moderator moderator = new Moderator("Andrey", "a.webears@gmail.com","2329382","123456", "moderator");
-
-        Company company1 = copyAppDB.addCompany("Рога&Копыта", "Kiev", "descriptionCompany");
-
-        Company company2 = copyAppDB.addCompany("ЧП Туалет", "Kiev", "новый вид продвинутых компани");
-
         Service service = new Service("Телефония", "настройка телефонной связи");
         copyAppDB.addService(service);
 
@@ -33,7 +27,21 @@ public class IModeratorControllerTest {
         Service service3 = new Service("оповещение", "установка оповешение в офисе");
         copyAppDB.addService(service3);
 
-        copyAppDB.addWorker("Rab", "rab@gmail.com", "3049349", "2344", "wewew", "Worker");
+        Moderator moderator = new Moderator("Andrey", "a.webears@gmail.com","2329382","123456", "moderator");
+
+        Company company1 = copyAppDB.addCompany("Рога&Копыта", "Kiev", "descriptionCompany");
+        company1.setModerator(moderator);
+        company1.addService(service);
+        company1.addService(service1);
+        //System.out.println(moderator.getServices());        ;
+
+        Company company2 = copyAppDB.addCompany("ЧП Туалет", "Kiev", "новый вид продвинутых компани");
+        company2.setModerator(moderator);
+        company2.addService(service2);
+        company2.addService(service3);
+
+        Worker worker = copyAppDB.addWorker("Rab", "rab@gmail.com", "3049349", "2344", "wewew", "Worker");
+        worker.setCompany(company1);
 
         Worker worker1 = copyAppDB.addWorker("Ivko", "ivko@gmail.com", "34549349", "87844", "Разноробочий", "Worker");
         worker1.setCompany(company1);
@@ -45,7 +53,11 @@ public class IModeratorControllerTest {
 
         Client client2 = copyAppDB.addClient("Yula", "yulya@gmail.com", "67634", "23423", "client");
 
-        Order order = new Order(2, service, client1, "настроить АТС Панасоник");
+        Order order1 = new Order(2, service, client1, "настроить АТС Панасоник");
+        Order order2 = new Order(4, service3, client2, "настроить АТС Панасоник");
+
+
+
         //тестирование метода регистрации
         //testRegister(moderator);
         //testAddCompany(company1);

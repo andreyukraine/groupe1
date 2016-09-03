@@ -19,7 +19,9 @@ public interface IAppDB {
     Service findService(String nameService);
 
     Company addCompany(String nameCompany, String city, String descriptionCompany);
-    //Company addCompany(Company company);
+    // Назначить заказу работника
+
+    Company addCompany(Company company);
     boolean removeCompany(String nameCompany);
     Company editCompany(String oldNameCompany, String newNameCompany, String description);
     Company getCompany(String nameCompany);
@@ -40,7 +42,7 @@ public interface IAppDB {
     Order findOrder(long idOrder);
     Order addOrder(int leadTime, Service service, Client client, String descriptionOrder);
     boolean removeOrder(long idOrder);
-    Order editOrder(long idOrder, String oldDescription, String newDescription);
+    Order editOrder(long idOrder, String newDescription);
 
     // Назначить статус заказа
     Order assignStatusOrder(Order order, Status status);

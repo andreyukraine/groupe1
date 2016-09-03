@@ -144,8 +144,10 @@ public class IModeratorControllerImp implements IModeratorController {
             return null;
         }
 
+        Service service = appDBImpl.findService(serviceName);
+        myServices.add(service);
         Company company = appDBImpl.findCompany(companyName);
-        company.addService(serviceName);
+        company.addService(service);
         return company;
     }
 
@@ -303,17 +305,25 @@ public class IModeratorControllerImp implements IModeratorController {
     // Назначить статус заказа
     @Override
     public Order assignStatusOrder(Order order, Status status) {
-        return null;
+        Order order1 = appDBImpl.assignStatusOrder(order,status);
+        return order1;
     }
 
     @Override
     public Order asignOrderToWorker(Order order, Worker worker) {
-        return null;
+        Order order1 = appDBImpl.asignOrderToWorker(order, worker);
+        return order1;
     }
 
     // Показать все свободных работников
     @Override
-    public Worker[] showAllFreeWorker(Status status) {
-        return new Worker[0];
+    public void showAllFreeWorker(Status statusWorker) {
+
+        for (int i = 0; i <myWorkers.size() ; i++) {
+            if(statusWorker.equals(myWorkers.get(i).getStatus())){
+                System.out.println(myWorkers.get(i));
+            }
+        }
+
     }
 }

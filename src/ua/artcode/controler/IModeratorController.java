@@ -75,7 +75,7 @@ public interface IModeratorController {
     // присвоить ордеру воркера
     Order asignOrderToWorker(Order order, Worker worker);
     //посмотреть всех свободных сотрудников
-    Worker[] showAllFreeWorker(Status status);
+    void showAllFreeWorker(Status status);
 
 
     Order findOrder(long idOrder);

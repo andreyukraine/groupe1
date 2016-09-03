@@ -1,5 +1,8 @@
 package ua.artcode.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by serhii on 21.08.16.
  */
@@ -8,15 +11,17 @@ public class Service {
     private long id;
     private String nameService;
     private String descriptionService;
-    private Worker[] workers;
-    private Comment[] commentsService;
+    private List<Worker> workers = new ArrayList();
+    private List<Comment> commentsService = new ArrayList();
     private Rate rateService;
+    private long indexOfService;
 
     // constructors --------------------------------------------------------------------------------
 
     public Service(String nameService, String descriptionService) {
         this.nameService = nameService;
         this.descriptionService = descriptionService;
+        this.id = indexOfService++;
     }
 
     public Service() {
@@ -49,19 +54,19 @@ public class Service {
         this.descriptionService = descriptionService;
     }
 
-    public Worker[] getWorkers() {
+    public List<Worker> getWorkers() {
         return workers;
     }
 
-    public void setWorkers(Worker[] workers) {
+    public void setWorkers(List<Worker> workers) {
         this.workers = workers;
     }
 
-    public Comment[] getCommentsService() {
+    public List<Comment> getCommentsService() {
         return commentsService;
     }
 
-    public void setCommentsService(Comment[] commentsService) {
+    public void setCommentsService(List<Comment> commentsService) {
         this.commentsService = commentsService;
     }
 

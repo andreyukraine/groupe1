@@ -13,6 +13,7 @@ public class Worker extends User {
 
     //w+1
     //w+2
+    private long id;
     private Company company;
     private String descriptionWorker;
     private Status status;
@@ -28,6 +29,7 @@ public class Worker extends User {
     private List<Order> ordersOfWorker = new ArrayList<>();
     private IModeratorController iModeratorController;
     private long indexOfOrder;
+    private long indexOfWorker;
 
     // constructors --------------------------------------------------------------------------------
 
@@ -35,12 +37,14 @@ public class Worker extends User {
 
         super(fullname, email, phone, pass, descriptionWorker);
         this.descriptionWorker = descriptionWorker;
+        this.id = indexOfWorker++;
     }
 
     public Worker(String fullname, String email, String phone, String pass, String descriptionWorker, String role) {
 
         super(fullname, email, phone, pass, descriptionWorker);
         this.descriptionWorker = descriptionWorker;
+        this.id = indexOfWorker++;
     }
 
     // methods --------------------------------------------------------------------------------

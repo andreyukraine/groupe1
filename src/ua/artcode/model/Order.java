@@ -1,6 +1,8 @@
 package ua.artcode.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by IT on 21.08.2016.
@@ -18,6 +20,8 @@ public class Order {
     private Worker worker;
     private String descriptionOrder;
     private Status status;
+    private List<Comment> comments = new ArrayList<>();
+    private long indexOfOrder;
 
     // constructors --------------------------------------------------------------------------------
 
@@ -27,6 +31,7 @@ public class Order {
         this.service = service;
         this.client = client;
         this.descriptionOrder = descriptionOrder;
+        this.id = indexOfOrder++;
 
     }
 
